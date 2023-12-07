@@ -170,6 +170,38 @@ echo -e "$green[INFO]$NC Pointing Domain NS"
 wget https://raw.githubusercontent.com/sasak3/v4/main/slowdns/cfslow.sh && chmod +x cfslow.sh && ./cfslow.sh
 rm -f /root/cfslow.sh
 clear
+#install ssh ovpn
+echo -e "$green[INFO]$NC Install SSH"
+sleep 2
+wget https://raw.githubusercontent.com/sasak3/v4/main/ssh/ssh-vpn.sh && chmod +x ssh-vpn.sh && ./ssh-vpn.sh
+clear
+#Instal Xray
+echo -e "$green[INFO]$NC Install Xray"
+sleep 2
+wget https://raw.githubusercontent.com/sasak3/v4/main/xray/ins-xray.sh && chmod +x ins-xray.sh && ./ins-xray.sh
+clear
+wget https://raw.githubusercontent.com/sasak3/multi-ws/ipuk/xray/ins-xray.sh && chmod +x ins-xray.sh && ./ins-xray.sh
+clear
+#instal websocket
+echo -e "$green[INFO]$NC Install websocket"
+sleep 2
+wget https://raw.githubusercontent.com/sasak3/v4/main/Sshws/insshws.sh && chmod +x insshws.sh && ./insshws.sh
+clear
+#pasang rc clone ssh ovpn 
+echo -e "$green[INFO]$NC Install SET-BR"
+sleep 2
+wget https://raw.githubusercontent.com/sasak3/v4/main/backup/set-br.sh &&  chmod +x set-br.sh && ./set-br.sh >/dev/null 2>&1
+clear   
+#Instal slowdns
+echo -e "$green[INFO]$NC Install SowDNS"
+sleep 2
+wget -q -O slow.sh https://raw.githubusercontent.com/sasak3/v4/main/slowdns/slow.sh && chmod +x slow.sh && ./slow.sh
+clear
+#udp
+echo -e "$green[INFO]$NC Install UDP"
+sleep 2
+wget https://raw.githubusercontent.com/heruahmad1/v4/main/udp/udp.sh && bash udp.sh
+clear
 
 
 
