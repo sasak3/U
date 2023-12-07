@@ -141,12 +141,11 @@ echo ""
   echo -e "\e[32m   ───│    ┴ ┴└─┘ ┴ └─┘└─┘└─┘┴└─┴┴   ┴   ┴─┘┴ ┴ └─┘   │───\033[0m"
   echo -e "\e[32m      │\033[0m  \e[33m      HR-vpn (C)https://t.me/HRstores      \033[0m \e[32m │\033[0m"
   echo -e "\e[32m      └───────────────────────────────────────────────┘\033[0m"
-  echo ""
-    echo -e "${red}        ♦️ CUSTOM SETUP DOMAIN VPS     ${NC}"
-    echo -e "${red} ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
-    echo "  2. Gunakan Domain Dari Script"
-    echo "  3. Pilih Domain Sendiri"
-    echo -e "${red} ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
+    echo -e "${red}                       ♦️ CUSTOM SETUP DOMAIN VPS     ${NC}"
+    echo -e "\e[32m      ┌───────────────────────────────────────────────┐\033[0m"
+    echo "          1. Gunakan Domain Dari Script"
+    echo "          2. Pilih Domain Sendiri"
+    echo -e "\e[32m      └───────────────────────────────────────────────┘\033[0m"
     read -rp " Tentukan domain anda : " dom 
 
 if test $dom -eq 1; then
