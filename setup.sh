@@ -19,7 +19,7 @@ clear
   echo -e "\e[32m   ───│    ┌─┐┬ ┬┌┬┐┌─┐┌─┐┌─┐┬─┐┬┌─┐┌┬┐  ┬  ┬┌┬┐┌─┐   │───\033[0m"
   echo -e "\e[32m   ───│    ├─┤│ │ │ │ │└─┐│  ├┬┘│├─┘ │   │  │ │ ├┤    │───\033[0m"
   echo -e "\e[32m   ───│    ┴ ┴└─┘ ┴ └─┘└─┘└─┘┴└─┴┴   ┴   ┴─┘┴ ┴ └─┘   │───\033[0m"
-  echo -e "\e[32m      │\033[0m  \e[33m    HR-vpn (C)https://t.me/HRstores          \033[0m \e[32m │\033[0m"
+  echo -e "\e[32m      │\033[0m  \e[33m      HR-vpn (C)https://t.me/HRstores      \033[0m \e[32m │\033[0m"
   echo -e "\e[32m      └───────────────────────────────────────────────┘\033[0m"
   echo -e "\e[36m             Autoscript xray vpn lite (multi port)\033[0m"
   echo -e "\e[36m  Make sure the internet is smooth when installing the script\033[0m"
@@ -27,13 +27,14 @@ clear
   echo ""
 read -n 1 -s -r -p " Tekan enter untuk melanjutkan"
 clear
-echo -e "[ \e[33mINFO\033[0m ] Cek izin script.."
+echo -e "[ \e[33mINFO\033[0m ] Memeriksa izin script.."
 sleep 3
 CEKEXPIRED () {
 today=$(date -d +1day +%Y-%m-%d)
 Exp1=$(curl -sS https://raw.githubusercontent.com/sasak3/izinvps/main/ip | grep $MYIP | awk '{print $3}')
 if [[ $today < $Exp1 ]]; then
 echo -e "[ \e[33mINFO\033[0m ] Bersiap melakukan penginstalan"
+sleep 2
 read -n 1 -s -r -p " Tekan enter untuk melanjutkan"
 else
 echo -e "[ \e[33mINFO\033[0m izin script sudah berahir"
@@ -81,8 +82,8 @@ echo "IP=" >> /var/lib/alf-prem/ipvps.conf
 echo -e "[ ${green}INFO${NC} mulai menginstall"
 if [ -f "/etc/xray/domain" ]; then
 echo ""
-echo -e "[ INFO ] Script sudah di install"
-echo -ne "[ $yellWARNING$NC ] Apakah kamu mau install lagi ? (y/n)? "
+echo -e "[ \e[33mINFO\033[0m ] Script sudah di install"
+echo -ne "[ \e[33mWARNING\033[0m ] Apakah kamu mau install lagi ? (y/n)? "
 read answer
 if [ "$answer" == "${answer#[Yy]}" ] ;then
 rm setup.sh
@@ -132,17 +133,15 @@ clear
  #       echo "IP=$pp" > /var/lib/SIJA/ipvps.conf
   #  fi
 
-echo -e ""
-echo -e " ════════════════════════════════════════" 
-echo -e "     _   _ ____" 
-echo -e "    | | | |  _ \    __   ___ __  _ __  " 
-echo -e "    | |_| | |_) |___\ \ / / '_ \| '_ \  " 
-echo -e "    |  _  |  _ <_____\ V /| |_) | | | | " 
-echo -e "    |_| |_|_| \_\     \_/ | .__/|_| |_| " 
-echo -e "                          |_|  "
-echo -e " ════════════════════════════════════════" 
-echo -e "              [Autoscrip Lite]" 
-echo -e " ════════════════════════════════════════" 
+echo ""
+  echo -e "\e[32m      ┌───────────────────────────────────────────────┐\033[0m"
+  echo -e "\e[32m   ───│                                               │───\033[0m"
+  echo -e "\e[32m   ───│    ┌─┐┬ ┬┌┬┐┌─┐┌─┐┌─┐┬─┐┬┌─┐┌┬┐  ┬  ┬┌┬┐┌─┐   │───\033[0m"
+  echo -e "\e[32m   ───│    ├─┤│ │ │ │ │└─┐│  ├┬┘│├─┘ │   │  │ │ ├┤    │───\033[0m"
+  echo -e "\e[32m   ───│    ┴ ┴└─┘ ┴ └─┘└─┘└─┘┴└─┴┴   ┴   ┴─┘┴ ┴ └─┘   │───\033[0m"
+  echo -e "\e[32m      │\033[0m  \e[33m      HR-vpn (C)https://t.me/HRstores      \033[0m \e[32m │\033[0m"
+  echo -e "\e[32m      └───────────────────────────────────────────────┘\033[0m"
+  echo ""
     echo -e "${red}        ♦️ CUSTOM SETUP DOMAIN VPS     ${NC}"
     echo -e "${red} ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
     echo "  2. Gunakan Domain Dari Script"
