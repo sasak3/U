@@ -14,29 +14,29 @@ tyblue='\e[1;36m'
 NC='\e[0m'
 clear
   echo ""
-  echo -e "\e[32m      ┌───────────────────────────────────────────────┐\032[0m"
-  echo -e "\e[32m   ───│                                                │───\032[0m"
-  echo -e "\e[32m   ───│    ┌─┐┬ ┬┌┬┐┌─┐┌─┐┌─┐┬─┐┬┌─┐┌┬┐  ┬  ┬┌┬┐┌─┐   │───\032[0m"
-  echo -e "\e[32m   ───│    ├─┤│ │ │ │ │└─┐│  ├┬┘│├─┘ │   │  │ │ ├┤    │───\032[0m"
-  echo -e "\e[32m   ───│    ┴ ┴└─┘ ┴ └─┘└─┘└─┘┴└─┴┴   ┴   ┴─┘┴ ┴ └─┘   │───\032[0m"
-  echo -e "\e[32m      │\032[0m  \e[33m       (C)https://t.me/HRstores       \033[0m \e[32m │\032[0m"
-  echo -e "\e[32m      └───────────────────────────────────────────────┘\032[0m"
-  echo -e "              Autoscript xray vpn lite (multi port)"
-  echo -e "    Make sure the internet is smooth when installing the script"
-  echo -e "\e[31m      JANGAN INSTALL SCRIPT INI MENGGUNAKAN KONEKSI VPN!!!\031[0m"
+  echo -e "\e[32m      ┌───────────────────────────────────────────────┐\033[0m"
+  echo -e "\e[32m   ───│                                               │───\033[0m"
+  echo -e "\e[32m   ───│    ┌─┐┬ ┬┌┬┐┌─┐┌─┐┌─┐┬─┐┬┌─┐┌┬┐  ┬  ┬┌┬┐┌─┐   │───\033[0m"
+  echo -e "\e[32m   ───│    ├─┤│ │ │ │ │└─┐│  ├┬┘│├─┘ │   │  │ │ ├┤    │───\033[0m"
+  echo -e "\e[32m   ───│    ┴ ┴└─┘ ┴ └─┘└─┘└─┘┴└─┴┴   ┴   ┴─┘┴ ┴ └─┘   │───\033[0m"
+  echo -e "\e[32m      │\033[0m  \e[33m        (C)https://t.me/HRstores        \033[0m \e[32m │\033[0m"
+  echo -e "\e[32m      └───────────────────────────────────────────────┘\033[0m"
+  echo -e "\e[36m             Autoscript xray vpn lite (multi port)\033[0m"
+  echo -e "\e[36m  Make sure the internet is smooth when installing the script\033[0m"
+  echo -e "\e[31m     JANGAN INSTALL SCRIPT INI MENGGUNAKAN KONEKSI VPN!!!\033[0m"
   echo ""
 read -n 1 -s -r -p " Tekan enter untuk melanjutkan"
 clear
-echo -e "[ \e[33mINFO${NC} Cek izin script.."
+echo -e "[ \e[33mINFO\033[0m Cek izin script.."
 slep 3
 CEKEXPIRED () {
 today=$(date -d +1day +%Y-%m-%d)
 Exp1=$(curl -sS https://raw.githubusercontent.com/sasak3/izinvps/main/ip | grep $MYIP | awk '{print $3}')
 if [[ $today < $Exp1 ]]; then
-echo -e "[ \e[33mINFO\033[0m ] Bersiap melakukan penginstalan"
+echo -e "[ \e[33mINFO\033[0m Bersiap melakukan penginstalan"
 read -n 1 -s -r -p " Tekan enter untuk melanjutkan"
 else
-echo -e "[ \e[33mINFO\033[0m ] izin script sudah berahir"
+echo -e "[ \e[33mINFO\033[0m izin script sudah berahir"
 read -n 1 -s -r -p "  Press any key to Exit"
 rm -f /root/sc
 clear
@@ -45,11 +45,11 @@ fi
 }
 IZIN=$(curl -sS https://raw.githubusercontent.com/sasak3/izinvps/main/ip | awk '{print $4}' | grep $MYIP)
 if [[ $MYIP = $IZIN ]]; then
-echo -e "[ \e[33mINFO\033[0m ] izin script telah di konfirmasi"
+echo -e "[ \e[33mINFO\033[0m izin script telah di konfirmasi"
 slep 2
 CEKEXPIRED
 else
-echo -e "[ \e[33mINFO\033[0m ] izin ip di tolak.. silahkan melakukan registrasi"
+echo -e "[ \e[33mINFO\033[0m izin ip di tolak.. silahkan melakukan registrasi"
 read -n 1 -s -r -p "  Press any key to Exit"
 rm -f /root/sc
 clear
