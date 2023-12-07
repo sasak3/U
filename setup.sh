@@ -2,188 +2,81 @@
 dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
 biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
 #########################
-
-REPO="https://raw.githubusercontent.com/sasak3/U/main/"
-
-###
-BURIQ () {
-    curl -sS https://raw.githubusercontent.com/sasak3/izinvps/main/ip > /root/tmp
-    data=( `cat /root/tmp | grep -E "^### " | awk '{print $2}'` )
-    for user in "${data[@]}"
-    do
-    exp=( `grep -E "^### $user" "/root/tmp" | awk '{print $3}'` )
-    d1=(`date -d "$exp" +%s`)
-    d2=(`date -d "$biji" +%s`)
-    exp2=$(( (d1 - d2) / 86400 ))
-    if [[ "$exp2" -le "0" ]]; then
-    echo $user > /etc/.$user.ini
-    else
-    rm -f  /etc/.$user.ini > /dev/null 2>&1
-    fi
-    done
-    rm -f  /root/tmp
-}
-# https://raw.githubusercontent.com/sasak3/izinvps/ipuk/ip 
+sysctl -w net.ipv6.conf.all.disable_ipv6=1
+sysctl -w net.ipv6.conf.default.disable_ipv6=1
+apt install -y bzip2 gzip coreutils screen curl
 MYIP=$(curl -sS ipv4.icanhazip.com)
-Name=$(curl -sS https://raw.githubusercontent.com/sasak3/izinvps/main/ip | grep $MYIP | awk '{print $2}')
-echo $Name > /usr/local/etc/.$Name.ini
-CekOne=$(cat /usr/local/etc/.$Name.ini)
-
-Bloman () {
-if [ -f "/etc/.$Name.ini" ]; then
-CekTwo=$(cat /etc/.$Name.ini)
-    if [ "$CekOne" = "$CekTwo" ]; then
-        res="Expired"
-    fi
-else
-res="Permission Accepted..."
-fi
-}
-
-PERMISSION () {
-    MYIP=$(curl -sS ipv4.icanhazip.com)
-    IZIN=$(curl -sS https://raw.githubusercontent.com/sasak3/izinvps/main/ip | awk '{print $4}' | grep $MYIP)
-    if [ "$MYIP" = "$IZIN" ]; then
-    Bloman
-    else
-    res="Permission Denied!"
-    fi
-    BURIQ
-}
-
-clear
+scversi=$(curl -sS https://raw.githubusercontent.com/vlukss/Premium/main/update/scriptversion | awk '{print $1}')
 red='\e[1;31m'
 green='\e[0;32m'
 yell='\e[1;33m'
 tyblue='\e[1;36m'
 NC='\e[0m'
-purple() { echo -e "\\033[35;1m${*}\\033[0m"; }
-tyblue() { echo -e "\\033[36;1m${*}\\033[0m"; }
-yellow() { echo -e "\\033[33;1m${*}\\033[0m"; }
-green() { echo -e "\\033[32;1m${*}\\033[0m"; }
-red() { echo -e "\\033[31;1m${*}\\033[0m"; }
-cd /root
-#System version number
-if [ "${EUID}" -ne 0 ]; then
-		echo " Anda perlu menjalankan skrip ini sebagai root"
-		exit 1
+clear
+  echo ""
+  echo -e "\e[33m    ┌───────────────────────────────────────────────┐\033[0m"
+  echo -e "\e[33m ───│                                                       │───\033[0m"
+  echo -e "\e[33m ───│    ┌─┐┬ ┬┌┬┐┌─┐┌─┐┌─┐┬─┐┬┌─┐┌┬┐  ┬  ┬┌┬┐┌─┐    │───\033[0m"
+  echo -e "\e[33m ───│    ├─┤│ │ │ │ │└─┐│  ├┬┘│├─┘ │   │  │ │ ├┤       │───\033[0m"
+  echo -e "\e[33m ───│    ┴ ┴└─┘ ┴ └─┘└─┘└─┘┴└─┴┴   ┴   ┴─┘┴ ┴ └─┘     │───\033[0m"
+  echo -e "\e[33m    │\033[0m  \e[33m    (C)https://t.me/fightertunnell  \033[0m \e[33m │\033[0m"
+  echo -e "\e[33m    └───────────────────────────────────────────────┘\033[0m"
+  echo -e "              Autoscript xray vpn lite (multi port)"
+  echo -e "      Make sure the internet is smooth when installing the script"
+  echo -e "\e[33m     JANGAN INSTALL SCRIPT INI MENGGUNAKAN KONEKSI VPN!!!\033[0m"
+  echo ""
+read -n 1 -s -r -p "  Press any key to Continue"
+clear
+echo -e "[ ${green}INFO${NC} Cek izin ip"
+CEKEXPIRED () {
+today=$(date -d +1day +%Y-%m-%d)
+Exp1=$(curl -sS https://raw.githubusercontent.com/sasak3/izinvps/main/ip | grep $MYIP | awk '{print $3}')
+if [[ $today < $Exp1 ]]; then
+echo -e "[ ${green}INFO${NC} status script aktip"
+read -n 1 -s -r -p "  Press any key to Continue"
+else
+echo -e "[ ${green}INFO${NC} izin ip sudah berahir"
+read -n 1 -s -r -p "  Press any key to Exit"
+rm -f /root/sc
+clear
+exit 0
 fi
-if [ "$(systemd-detect-virt)" == "openvz" ]; then
-		echo " OpenVZ Tidak di dukung"
-		exit 1
+}
+IZIN=$(curl -sS https://raw.githubusercontent.com/sasak3/izinvps/main/ip | awk '{print $4}' | grep $MYIP)
+if [[ $MYIP = $IZIN ]]; then
+echo -e "[ ${green}INFO${NC} izin ip telah di setujui"
+CEKEXPIRED
+else
+echo -e "[ ${green}INFO${NC} izin ip di tolak.. silahkan melakukan registrasi"
+read -n 1 -s -r -p "  Press any key to Exit"
+rm -f /root/sc
+clear
+exit 0
 fi
-
+clear
 localip=$(hostname -I | cut -d\  -f1)
 hst=( `hostname` )
 dart=$(cat /etc/hosts | grep -w `hostname` | awk '{print $2}')
 if [[ "$hst" != "$dart" ]]; then
 echo "$localip $(hostname)" >> /etc/hosts
 fi
+if [ -f "/root/log-install.txt" ]; then
+rm -fr /root/log-install.txt
+fi
 mkdir -p /etc/xray
- 
-  exit
-else
-  clear
-fi
-
-echo -e "[ ${tyblue}NOTES${NC} ] Sebelum Lanjut. . "
-sleep 1
-echo -e "[ ${tyblue}NOTES${NC} ] Saya perlu memeriksa header anda dulu.."
-sleep 2
-echo -e "[ ${green}INFO${NC} ] Memeriksa headers..."
-sleep 1
-totet=`uname -r`
-REQUIRED_PKG="linux-headers-$totet"
-PKG_OK=$(dpkg-query -W --showformat='${Status}\n' $REQUIRED_PKG|grep "install ok installed")
-echo Checking for $REQUIRED_PKG: $PKG_OK
-if [ "" = "$PKG_OK" ]; then
-  sleep 2
-  echo -e "[ ${yell}WARNING${NC} ] Mencoba untuk install ...."
-  echo "No $REQUIRED_PKG. Setting up $REQUIRED_PKG."
-  apt-get --yes install $REQUIRED_PKG
-  sleep 1
-  echo ""
-  sleep 1
-  echo -e "[ ${tyblue}NOTES${NC} ] Jika error... Anda perlu melakukan ini"
-  sleep 1
-  echo ""
-  sleep 1
-  echo -e "[ ${tyblue}NOTES${NC} ] 1. Lakukan update -y"
-  sleep 1
-  echo -e "[ ${tyblue}NOTES${NC} ] 2. Lakukan upgrade -y"
-  sleep 1
-  echo -e "[ ${tyblue}NOTES${NC} ] 3. Upgrade dist Yg tepat -y"
-  sleep 1
-  echo ""
-  echo -e "${tyblue}    ┌───────────────────────────────────────────────┐${NC}"
-  echo -e "${tyblue} ───│                                                       │───${NC}"
-  echo -e "${tyblue} ───│    ┌─┐┬ ┬┌┬┐┌─┐┌─┐┌─┐┬─┐┬┌─┐┌┬┐  ┬  ┬┌┬┐┌─┐    │───${NC}"
-  echo -e "${tyblue} ───│    ├─┤│ │ │ │ │└─┐│  ├┬┘│├─┘ │   │  │ │ ├┤       │───${NC}"
-  echo -e "${tyblue} ───│    ┴ ┴└─┘ ┴ └─┘└─┘└─┘┴└─┴┴   ┴   ┴─┘┴ ┴ └─┘     │───${NC}"
-  echo -e "${tyblue}    │${NC}${yellow}    (C)https://t.me/fightertunnell  ${NC} ${tyblue} │${NC}"
-  echo -e "${tyblue}    └───────────────────────────────────────────────┘${NC}"
-  echo -e "              Autoscript xray vpn lite (multi port)"
-  echo -e "      Make sure the internet is smooth when installing the script"
-  echo -e "${red}     JANGAN INSTALL SCRIPT INI MENGGUNAKAN KONEKSI VPN!!!${NC}"
-  echo -e "[ ${tyblue}NOTES${NC} ] Untuk melanjutkan tekan ENTER.."
-  read
-else
-  echo -e "[ ${green}INFO${NC} ] Oke install di mulai"
-fi
-
-ttet=`uname -r`
-ReqPKG="linux-headers-$ttet"
-if ! dpkg -s $ReqPKG  >/dev/null 2>&1; then
-  rm /root/setup.sh >/dev/null 2>&1 
-
-secs_to_human() {
-    echo "Installation time : $(( ${1} / 3600 )) hours $(( (${1} / 60) % 60 )) minute's $(( ${1} % 60 )) seconds"
-}
-start=$(date +%s)
+mkdir -p /etc/v2ray
+touch /etc/xray/domain
+touch /etc/v2ray/domain
+touch /etc/xray/scdomain
+touch /etc/v2ray/scdomain
 ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
 sysctl -w net.ipv6.conf.all.disable_ipv6=1 >/dev/null 2>&1
 sysctl -w net.ipv6.conf.default.disable_ipv6=1 >/dev/null 2>&1
-
-coreselect=''
-cat> /root/.profile << END
-# ~/.profile: executed by Bourne-compatible login shells.
-
-if [ "$BASH" ]; then
-  if [ -f ~/.bashrc ]; then
-    . ~/.bashrc
-  fi
-fi
-
-mesg n || true
-clear
-END
-chmod 644 /root/.profile
-
-echo -e "[ ${green}INFO${NC} ] Mempersiapkan file instalasi"
 apt install git curl -y >/dev/null 2>&1
-echo -e "[ ${green}INFO${NC} ] Oke sudah siap ... install vps sudah siap"
-sleep 2
-echo -ne "[ ${green}INFO${NC} ] Cek perizinan : "
-
-PERMISSION
-if [ -f /home/needupdate ]; then
-red "Your script need to update first !"
-exit 0
-elif [ "$res" = "Permission Accepted..." ]; then
-green "Izin ip sudah valid!"
-else
-red "Izin di tolak hubungi admin!"
-rm setup.sh > /dev/null 2>&1
-sleep 10
-exit 0
-fi
-sleep 3
-
-mkdir -p /etc/kyt
-mkdir -p /etc/ssnvpn/theme
-mkdir -p /var/lib/ssnvpn-pro >/dev/null 2>&1
-echo "IP=" >> /var/lib/ssnvpn-pro/ipvps.conf
-
+apt install python -y >/dev/null 2>&1
+mkdir -p /var/lib/alf-prem >/dev/null 2>&1
+echo "IP=" >> /var/lib/alf-prem/ipvps.conf
+echo -e "[ ${green}INFO${NC} mulai menginstall"
 if [ -f "/etc/xray/domain" ]; then
 echo ""
 echo -e "[ ${green}INFO${NC} ] Script sudah di install"
@@ -278,3 +171,6 @@ echo -e "$green[INFO]$NC Pointing Domain NS"
 wget https://raw.githubusercontent.com/sasak3/v4/main/slowdns/cfslow.sh && chmod +x cfslow.sh && ./cfslow.sh
 rm -f /root/cfslow.sh
 clear
+
+
+
