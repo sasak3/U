@@ -35,7 +35,6 @@ Exp1=$(curl -sS https://raw.githubusercontent.com/heruahmad1/permission/main/ipm
 if [[ $today < $Exp1 ]]; then
 echo -e "[ \e[33mINFO\033[0m ] Bersiap melakukan penginstalan"
 sleep 2
-read -n 1 -s -r -p " Tekan enter untuk melanjutkan"
 else
 echo -e "[ \e[33mINFO\033[0m izin script sudah berahir"
 read -n 1 -s -r -p "  Press any key to Exit"
@@ -141,7 +140,7 @@ echo ""
   echo -e "\e[32m   ───│    ┴ ┴└─┘ ┴ └─┘└─┘└─┘┴└─┴┴   ┴   ┴─┘┴ ┴ └─┘   │───\033[0m"
   echo -e "\e[32m      │\033[0m  \e[33m      HR-vpn (C)https://t.me/HRstores      \033[0m \e[32m │\033[0m"
   echo -e "\e[32m      └───────────────────────────────────────────────┘\033[0m"
-    echo -e "${red}                       ♦️ CUSTOM SETUP DOMAIN VPS     ${NC}"
+    echo -e "${red}                    ♦️ CUSTOM SETUP DOMAIN VPS     ${NC}"
     echo -e "\e[32m      ┌───────────────────────────────────────────────┐\033[0m"
     echo "          1. Gunakan Domain Dari Script"
     echo "          2. Pilih Domain Sendiri"
