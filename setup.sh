@@ -80,6 +80,31 @@ if [[ "$hst" != "$dart" ]]; then
 echo "$localip $(hostname)" >> /etc/hosts
 fi
 mkdir -p /etc/xray
+  echo ""
+  echo -e"${tyblue}    ┌───────────────────────────────────────────────┐${NC}"
+  echo -e"${tyblue} ───│                                                       │───${NC}"
+  echo -e"${tyblue} ───│    ┌─┐┬ ┬┌┬┐┌─┐┌─┐┌─┐┬─┐┬┌─┐┌┬┐  ┬  ┬┌┬┐┌─┐    │───${NC}"
+  echo -e"${tyblue} ───│    ├─┤│ │ │ │ │└─┐│  ├┬┘│├─┘ │   │  │ │ ├┤       │───${NC}"
+  echo -e"${tyblue} ───│    ┴ ┴└─┘ ┴ └─┘└─┘└─┘┴└─┴┴   ┴   ┴─┘┴ ┴ └─┘     │───${NC}"
+  echo -e"${tyblue}    │${NC}${yellow}    (C)https://t.me/fightertunnell  ${NC} ${tyblue} │${NC}"
+  echo -e"${tyblue}    └───────────────────────────────────────────────┘${NC}"
+  echo -e"              Autoscript xray vpn lite (multi port)"
+  echo -e"      Make sure the internet is smooth when installing the script"
+  echo -e"${red}      JANGAN INSTALL SCRIPT INI MENGGUNAKAN KONEKSI VPN!!!${NC}"
+  echo -e "[ ${tyblue}NOTES${NC} ] Untuk melanjutkan tekan ENTER.."
+  read
+else
+  echo -e "[ ${green}INFO${NC} ] Oke install di mulai"
+fi
+
+ttet=`uname -r`
+ReqPKG="linux-headers-$ttet"
+if ! dpkg -s $ReqPKG  >/dev/null 2>&1; then
+  rm /root/setup.sh >/dev/null 2>&1 
+  exit
+else
+  clear
+fi
 
 echo -e "[ ${tyblue}NOTES${NC} ] Sebelum Lanjut. . "
 sleep 1
@@ -110,32 +135,6 @@ if [ "" = "$PKG_OK" ]; then
   echo -e "[ ${tyblue}NOTES${NC} ] 3. Upgrade dist Yg tepat -y"
   sleep 1
   clear
-  echo ""
-  echo -e"${tyblue}    ┌───────────────────────────────────────────────┐${NC}"
-  echo -e"${tyblue} ───│                                                       │───${NC}"
-  echo -e"${tyblue} ───│    ┌─┐┬ ┬┌┬┐┌─┐┌─┐┌─┐┬─┐┬┌─┐┌┬┐  ┬  ┬┌┬┐┌─┐    │───${NC}"
-  echo -e"${tyblue} ───│    ├─┤│ │ │ │ │└─┐│  ├┬┘│├─┘ │   │  │ │ ├┤       │───${NC}"
-  echo -e"${tyblue} ───│    ┴ ┴└─┘ ┴ └─┘└─┘└─┘┴└─┴┴   ┴   ┴─┘┴ ┴ └─┘     │───${NC}"
-  echo -e"${tyblue}    │${NC}${yellow}    (C)https://t.me/fightertunnell  ${NC} ${tyblue} │${NC}"
-  echo -e"${tyblue}    └───────────────────────────────────────────────┘${NC}"
-  echo -e"              Autoscript xray vpn lite (multi port)"
-  echo -e"      Make sure the internet is smooth when installing the script"
-  echo -e"${red}      JANGAN INSTALL SCRIPT INI MENGGUNAKAN KONEKSI VPN!!!${NC}"
-  echo -e "[ ${tyblue}NOTES${NC} ] Untuk melanjutkan tekan ENTER.."
-  read
-else
-  echo -e "[ ${green}INFO${NC} ] Oke install di mulai"
-fi
-
-ttet=`uname -r`
-ReqPKG="linux-headers-$ttet"
-if ! dpkg -s $ReqPKG  >/dev/null 2>&1; then
-  rm /root/setup.sh >/dev/null 2>&1 
-  exit
-else
-  clear
-fi
-
 
 secs_to_human() {
     echo "Installation time : $(( ${1} / 3600 )) hours $(( (${1} / 60) % 60 )) minute's $(( ${1} % 60 )) seconds"
