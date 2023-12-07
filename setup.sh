@@ -28,7 +28,7 @@ clear
 read -n 1 -s -r -p " Tekan enter untuk melanjutkan"
 clear
 echo -e "[ \e[33mINFO\033[0m Cek izin script.."
-slep 3
+sleep 3
 CEKEXPIRED () {
 today=$(date -d +1day +%Y-%m-%d)
 Exp1=$(curl -sS https://raw.githubusercontent.com/sasak3/izinvps/main/ip | grep $MYIP | awk '{print $3}')
@@ -46,7 +46,7 @@ fi
 IZIN=$(curl -sS https://raw.githubusercontent.com/sasak3/izinvps/main/ip | awk '{print $4}' | grep $MYIP)
 if [[ $MYIP = $IZIN ]]; then
 echo -e "[ \e[33mINFO\033[0m izin script telah di konfirmasi"
-slep 2
+sleep 2
 CEKEXPIRED
 else
 echo -e "[ \e[33mINFO\033[0m izin ip di tolak.. silahkan melakukan registrasi"
@@ -81,8 +81,8 @@ echo "IP=" >> /var/lib/alf-prem/ipvps.conf
 echo -e "[ ${green}INFO${NC} mulai menginstall"
 if [ -f "/etc/xray/domain" ]; then
 echo ""
-echo -e "[ ${green}INFO${NC} ] Script sudah di install"
-echo -ne "[ ${yell}WARNING${NC} ] Apakah kamu mau install lagi ? (y/n)? "
+echo -e "[ INFO ] Script sudah di install"
+echo -ne "[ WARNING ] Apakah kamu mau install lagi ? (y/n)? "
 read answer
 if [ "$answer" == "${answer#[Yy]}" ] ;then
 rm setup.sh
