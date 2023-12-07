@@ -110,7 +110,7 @@ if [ "" = "$PKG_OK" ]; then
   echo -e "[ ${tyblue}NOTES${NC} ] 3. Upgrade dist Yg tepat -y"
   sleep 1
   clear
-  echo -e""
+  echo ""
   echo -e"${tyblue}    ┌───────────────────────────────────────────────┐${NC}"
   echo -e"${tyblue} ───│                                                       │───${NC}"
   echo -e"${tyblue} ───│    ┌─┐┬ ┬┌┬┐┌─┐┌─┐┌─┐┬─┐┬┌─┐┌┬┐  ┬  ┬┌┬┐┌─┐    │───${NC}"
