@@ -19,7 +19,7 @@ clear
   echo -e "\e[32m   ───│    ┌─┐┬ ┬┌┬┐┌─┐┌─┐┌─┐┬─┐┬┌─┐┌┬┐  ┬  ┬┌┬┐┌─┐   │───\033[0m"
   echo -e "\e[32m   ───│    ├─┤│ │ │ │ │└─┐│  ├┬┘│├─┘ │   │  │ │ ├┤    │───\033[0m"
   echo -e "\e[32m   ───│    ┴ ┴└─┘ ┴ └─┘└─┘└─┘┴└─┴┴   ┴   ┴─┘┴ ┴ └─┘   │───\033[0m"
-  echo -e "\e[32m      │\033[0m  \e[33m        (C)https://t.me/HRstores        \033[0m \e[32m │\033[0m"
+  echo -e "\e[32m      │\033[0m  \e[33m    HR-vpn (C)https://t.me/HRstores          \033[0m \e[32m │\033[0m"
   echo -e "\e[32m      └───────────────────────────────────────────────┘\033[0m"
   echo -e "\e[36m             Autoscript xray vpn lite (multi port)\033[0m"
   echo -e "\e[36m  Make sure the internet is smooth when installing the script\033[0m"
@@ -27,13 +27,13 @@ clear
   echo ""
 read -n 1 -s -r -p " Tekan enter untuk melanjutkan"
 clear
-echo -e "[ \e[33mINFO\033[0m Cek izin script.."
+echo -e "[ \e[33mINFO\033[0m ] Cek izin script.."
 sleep 3
 CEKEXPIRED () {
 today=$(date -d +1day +%Y-%m-%d)
 Exp1=$(curl -sS https://raw.githubusercontent.com/sasak3/izinvps/main/ip | grep $MYIP | awk '{print $3}')
 if [[ $today < $Exp1 ]]; then
-echo -e "[ \e[33mINFO\033[0m Bersiap melakukan penginstalan"
+echo -e "[ \e[33mINFO\033[0m ] Bersiap melakukan penginstalan"
 read -n 1 -s -r -p " Tekan enter untuk melanjutkan"
 else
 echo -e "[ \e[33mINFO\033[0m izin script sudah berahir"
@@ -45,11 +45,11 @@ fi
 }
 IZIN=$(curl -sS https://raw.githubusercontent.com/sasak3/izinvps/main/ip | awk '{print $4}' | grep $MYIP)
 if [[ $MYIP = $IZIN ]]; then
-echo -e "[ \e[33mINFO\033[0m izin script telah di konfirmasi"
+echo -e "[ \e[33mINFO\033[0m ] izin script telah di konfirmasi"
 sleep 2
 CEKEXPIRED
 else
-echo -e "[ \e[33mINFO\033[0m izin ip di tolak.. silahkan melakukan registrasi"
+echo -e "[ \e[33mINFO\033[0m ] izin ip di tolak.. silahkan melakukan registrasi"
 read -n 1 -s -r -p "  Press any key to Exit"
 rm -f /root/sc
 clear
@@ -82,7 +82,7 @@ echo -e "[ ${green}INFO${NC} mulai menginstall"
 if [ -f "/etc/xray/domain" ]; then
 echo ""
 echo -e "[ INFO ] Script sudah di install"
-echo -ne "[ WARNING ] Apakah kamu mau install lagi ? (y/n)? "
+echo -ne "[ $yellWARNING$NC ] Apakah kamu mau install lagi ? (y/n)? "
 read answer
 if [ "$answer" == "${answer#[Yy]}" ] ;then
 rm setup.sh
@@ -115,9 +115,8 @@ echo ""
 wget -q https://raw.githubusercontent.com/sasak3/v4/main/dep.sh;chmod +x dep.sh;./dep.sh
 rm dep.sh
 clear
+clear
 
-echo "install paket...!"
-echo 
 #echo " "
 #read -rp "Input ur domain : " -e pp
    # if [ -z $pp ]; then
@@ -142,14 +141,14 @@ echo -e "    |  _  |  _ <_____\ V /| |_) | | | | "
 echo -e "    |_| |_|_| \_\     \_/ | .__/|_| |_| " 
 echo -e "                          |_|  "
 echo -e " ════════════════════════════════════════" 
-echo -e "              [Autoscrip premium]" 
+echo -e "              [Autoscrip Lite]" 
 echo -e " ════════════════════════════════════════" 
     echo -e "${red}        ♦️ CUSTOM SETUP DOMAIN VPS     ${NC}"
     echo -e "${red} ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
-    echo "  2. Use Domain From script / Gunakan Domain Dari Script"
-    echo "  3. Choose Your Own Domain / Pilih Domain Sendiri"
+    echo "  2. Gunakan Domain Dari Script"
+    echo "  3. Pilih Domain Sendiri"
     echo -e "${red} ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
-    read -rp "Choose Your Domain Installation : " dom 
+    read -rp " Tentukan domain anda : " dom 
 
 if test $dom -eq 1; then
 clear
