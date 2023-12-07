@@ -107,8 +107,8 @@ elif [[ -e /etc/centos-release ]]; then
 fi
 
 echo ""
-wget -q https://raw.githubusercontent.com/sasak3/v4/main/dep.sh;chmod +x dep.sh;./dep.sh
-rm dep.sh
+wget -q https://raw.githubusercontent.com/sasak3/multi-ws/ipuk/dependencis.sh;chmod +x dep.sh;./dep.sh
+rm dependencis.sh
 clear
 clear
 
