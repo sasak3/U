@@ -65,11 +65,11 @@ red() { echo -e "\\033[31;1m${*}\\033[0m"; }
 cd /root
 #System version number
 if [ "${EUID}" -ne 0 ]; then
-		echo "You need to run this script as root"
+		echo " Anda perlu menjalankan skrip ini sebagai root"
 		exit 1
 fi
 if [ "$(systemd-detect-virt)" == "openvz" ]; then
-		echo "OpenVZ is not supported"
+		echo " OpenVZ Tidak di dukung"
 		exit 1
 fi
 
@@ -81,11 +81,11 @@ echo "$localip $(hostname)" >> /etc/hosts
 fi
 mkdir -p /etc/xray
 
-echo -e "[ ${tyblue}NOTES${NC} ] Before we go.. "
+echo -e "[ ${tyblue}NOTES${NC} ] Sebelum Lanjut. . "
 sleep 1
-echo -e "[ ${tyblue}NOTES${NC} ] I need check your headers first.."
+echo -e "[ ${tyblue}NOTES${NC} ] Saya perlu memeriksa header anda dulu.."
 sleep 2
-echo -e "[ ${green}INFO${NC} ] Checking headers"
+echo -e "[ ${green}INFO${NC} ] Memeriksa headers..."
 sleep 1
 totet=`uname -r`
 REQUIRED_PKG="linux-headers-$totet"
@@ -93,34 +93,34 @@ PKG_OK=$(dpkg-query -W --showformat='${Status}\n' $REQUIRED_PKG|grep "install ok
 echo Checking for $REQUIRED_PKG: $PKG_OK
 if [ "" = "$PKG_OK" ]; then
   sleep 2
-  echo -e "[ ${yell}WARNING${NC} ] Try to install ...."
+  echo -e "[ ${yell}WARNING${NC} ] Mencoba untuk install ...."
   echo "No $REQUIRED_PKG. Setting up $REQUIRED_PKG."
   apt-get --yes install $REQUIRED_PKG
   sleep 1
   echo ""
   sleep 1
-  echo -e "[ ${tyblue}NOTES${NC} ] If error you need.. to do this"
+  echo -e "[ ${tyblue}NOTES${NC} ] Jika error... Anda perlu melakukan ini"
   sleep 1
   echo ""
   sleep 1
-  echo -e "[ ${tyblue}NOTES${NC} ] 1. apt update -y"
+  echo -e "[ ${tyblue}NOTES${NC} ] 1. Lakukan update -y"
   sleep 1
-  echo -e "[ ${tyblue}NOTES${NC} ] 2. apt upgrade -y"
+  echo -e "[ ${tyblue}NOTES${NC} ] 2. Lakukan upgrade -y"
   sleep 1
-  echo -e "[ ${tyblue}NOTES${NC} ] 3. apt dist-upgrade -y"
+  echo -e "[ ${tyblue}NOTES${NC} ] 3. Upgrade dist Yg tepat -y"
   sleep 1
-  echo -e "[ ${tyblue}NOTES${NC} ] 4. reboot"
+  echo -e "[ ${tyblue}NOTES${NC} ] 4. Mulai ulang"
   sleep 1
   echo ""
   sleep 1
-  echo -e "[ ${tyblue}NOTES${NC} ] After rebooting"
+  echo -e "[ ${tyblue}NOTES${NC} ] Setelah mulai ulang"
   sleep 1
-  echo -e "[ ${tyblue}NOTES${NC} ] Then run this script again"
+  echo -e "[ ${tyblue}NOTES${NC} ] Jalankan skript ini Lagi"
   echo -e "[ ${tyblue}NOTES${NC} ] Notes, Script Mod By HR-vpn"
-  echo -e "[ ${tyblue}NOTES${NC} ] if you understand then tap enter now.."
+  echo -e "[ ${tyblue}NOTES${NC} ] Jika anda setuju tekan ENTER.."
   read
 else
-  echo -e "[ ${green}INFO${NC} ] Oke installed"
+  echo -e "[ ${green}INFO${NC} ] Oke install di mulai"
 fi
 
 ttet=`uname -r`
@@ -156,20 +156,20 @@ clear
 END
 chmod 644 /root/.profile
 
-echo -e "[ ${green}INFO${NC} ] Preparing the install file"
+echo -e "[ ${green}INFO${NC} ] Mempersiapkan file instalasi"
 apt install git curl -y >/dev/null 2>&1
-echo -e "[ ${green}INFO${NC} ] Allright good ... installation file is ready"
+echo -e "[ ${green}INFO${NC} ] Oke sudah siap ... install vps sudah siap"
 sleep 2
-echo -ne "[ ${green}INFO${NC} ] Check permission : "
+echo -ne "[ ${green}INFO${NC} ] Cek perizinan : "
 
 PERMISSION
 if [ -f /home/needupdate ]; then
 red "Your script need to update first !"
 exit 0
 elif [ "$res" = "Permission Accepted..." ]; then
-green "Permission Accepted!"
+green "Izin ip sudah valid!"
 else
-red "Permission Denied!"
+red "Izin di tolak hubungi admin!"
 rm setup.sh > /dev/null 2>&1
 sleep 10
 exit 0
@@ -183,8 +183,8 @@ echo "IP=" >> /var/lib/ssnvpn-pro/ipvps.conf
 
 if [ -f "/etc/xray/domain" ]; then
 echo ""
-echo -e "[ ${green}INFO${NC} ] Script Already Installed"
-echo -ne "[ ${yell}WARNING${NC} ] Do you want to install again ? (y/n)? "
+echo -e "[ ${green}INFO${NC} ] Script sudah di install"
+echo -ne "[ ${yell}WARNING${NC} ] Apakah kamu mau install lagi ? (y/n)? "
 read answer
 if [ "$answer" == "${answer#[Yy]}" ] ;then
 rm setup.sh
@@ -216,8 +216,8 @@ fi
 
 
 
-echo "Tools install...!"
-echo "Progress..."
+echo "install paket...!"
+echo "Prosess..."
 sleep 2
 
 apt update -y
