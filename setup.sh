@@ -80,11 +80,6 @@ mkdir -p /var/lib/alf-prem >/dev/null 2>&1
 echo "IP=" >> /var/lib/alf-prem/ipvps.conf
 echo -e "[ ${green}INFO${NC} mulai menginstall"
 if [ -f "/etc/xray/domain" ]; then
-echo ""
-echo -e "[ \e[33mINFO\033[0m ] Script sudah di install"
-echo -ne "[ \e[33mWARNING\033[0m ] Apakah kamu mau install lagi ? (y/n)? "
-read answer
-if [ "$answer" == "${answer#[Yy]}" ] ;then
 rm setup.sh
 sleep 10
 exit 0
