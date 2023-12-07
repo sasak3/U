@@ -6,7 +6,7 @@ sysctl -w net.ipv6.conf.all.disable_ipv6=1
 sysctl -w net.ipv6.conf.default.disable_ipv6=1
 apt install -y bzip2 gzip coreutils screen curl
 MYIP=$(curl -sS ipv4.icanhazip.com)
-scversi=$(curl -sS https://raw.githubusercontent.com/vlukss/Premium/main/update/scriptversion | awk '{print $1}')
+scversi=$(curl -sS https://raw.githubusercontent.com/heruahmad1/permission/main/vs | awk '{print $1}')
 red='\e[1;31m'
 green='\e[0;32m'
 yell='\e[1;33m'
@@ -31,7 +31,7 @@ echo -e "[ \e[33mINFO\033[0m ] Memeriksa izin script.."
 sleep 3
 CEKEXPIRED () {
 today=$(date -d +1day +%Y-%m-%d)
-Exp1=$(curl -sS https://raw.githubusercontent.com/sasak3/izinvps/main/ip | grep $MYIP | awk '{print $3}')
+Exp1=$(curl -sS https://raw.githubusercontent.com/heruahmad1/permission/main/ipmini | grep $MYIP | awk '{print $3}')
 if [[ $today < $Exp1 ]]; then
 echo -e "[ \e[33mINFO\033[0m ] Bersiap melakukan penginstalan"
 sleep 2
@@ -44,7 +44,7 @@ clear
 exit 0
 fi
 }
-IZIN=$(curl -sS https://raw.githubusercontent.com/sasak3/izinvps/main/ip | awk '{print $4}' | grep $MYIP)
+IZIN=$(curl -sS https://raw.githubusercontent.com/heruahmad1/permission/main/ipmini | awk '{print $4}' | grep $MYIP)
 if [[ $MYIP = $IZIN ]]; then
 echo -e "[ \e[33mINFO\033[0m ] izin script telah di konfirmasi"
 sleep 2
@@ -166,7 +166,6 @@ echo "IP=$host" >> /var/lib/SIJA/ipvps.conf
 #echo "IP=$host" >> /var/lib/scrz-prem/ipvps.conf
 echo "$host" >> /root/domain
 #clear
-echo -e "$green[INFO]$NC Pointing Domain NS"
 wget https://raw.githubusercontent.com/sasak3/v4/main/slowdns/cfslow.sh && chmod +x cfslow.sh && ./cfslow.sh
 rm -f /root/cfslow.sh
 clear
@@ -180,14 +179,10 @@ echo -e "$green[INFO]$NC Install Xray"
 sleep 2
 wget https://raw.githubusercontent.com/sasak3/v4/main/xray/ins-xray.sh && chmod +x ins-xray.sh && ./ins-xray.sh
 clear
-wget https://raw.githubusercontent.com/sasak3/multi-ws/ipuk/xray/ins-xray.sh && chmod +x ins-xray.sh && ./ins-xray.sh
-clear
 #instal websocket
 echo -e "$green[INFO]$NC Install websocket"
 sleep 2
 wget https://raw.githubusercontent.com/sasak3/v4/main/Sshws/insshws.sh && chmod +x insshws.sh && ./insshws.sh
-clear
-wget https://raw.githubusercontent.com/sasak3/multi-ws/ipuk/websocket/nontls.sh && chmod +x nontls.sh && ./nontls.sh
 clear
 #pasang rc clone ssh ovpn 
 echo -e "$green[INFO]$NC Install SET-BR"
