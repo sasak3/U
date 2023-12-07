@@ -109,15 +109,19 @@ if [ "" = "$PKG_OK" ]; then
   sleep 1
   echo -e "[ ${tyblue}NOTES${NC} ] 3. Upgrade dist Yg tepat -y"
   sleep 1
-  echo -e "[ ${tyblue}NOTES${NC} ] 4. Mulai ulang"
-  sleep 1
-  echo ""
-  sleep 1
-  echo -e "[ ${tyblue}NOTES${NC} ] Setelah mulai ulang"
-  sleep 1
-  echo -e "[ ${tyblue}NOTES${NC} ] Jalankan skript ini Lagi"
-  echo -e "[ ${tyblue}NOTES${NC} ] Notes, Script Mod By HR-vpn"
-  echo -e "[ ${tyblue}NOTES${NC} ] Jika anda setuju tekan ENTER.."
+  clear
+  echo -e""
+  echo -e"${tyblue}    ┌───────────────────────────────────────────────┐${NC}"
+  echo -e"${tyblue} ───│                                                       │───${NC}"
+  echo -e"${tyblue} ───│    ┌─┐┬ ┬┌┬┐┌─┐┌─┐┌─┐┬─┐┬┌─┐┌┬┐  ┬  ┬┌┬┐┌─┐    │───${NC}"
+  echo -e"${tyblue} ───│    ├─┤│ │ │ │ │└─┐│  ├┬┘│├─┘ │   │  │ │ ├┤       │───${NC}"
+  echo -e"${tyblue} ───│    ┴ ┴└─┘ ┴ └─┘└─┘└─┘┴└─┴┴   ┴   ┴─┘┴ ┴ └─┘     │───${NC}"
+  echo -e"${tyblue}    │${NC}${yellow}    (C)https://t.me/fightertunnell  ${NC} ${tyblue} │${NC}"
+  echo -e"${tyblue}    └───────────────────────────────────────────────┘${NC}"
+  echo -e"              Autoscript xray vpn lite (multi port)"
+  echo -e"      Make sure the internet is smooth when installing the script"
+  echo -e"${red}      JANGAN INSTALL SCRIPT INI MENGGUNAKAN KONEKSI VPN!!!${NC}"
+  echo -e "[ ${tyblue}NOTES${NC} ] Untuk melanjutkan tekan ENTER.."
   read
 else
   echo -e "[ ${green}INFO${NC} ] Oke install di mulai"
